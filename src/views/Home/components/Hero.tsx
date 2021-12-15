@@ -1,13 +1,14 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Flex, Heading, Link, Button } from '@pancakeswap/uikit'
+import { Flex, Heading, Button } from '@pancakeswap/uikit'
+import { Link } from 'react-router-dom'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import useTheme from 'hooks/useTheme'
 import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
 import CompositeImage, { getSrcSet, CompositeImageProps } from './CompositeImage'
-import imgicon from '../../../img/icon1.png' 
+import imgicon from '../../../img/icon1.png'
 
 const flyingAnim = () => keyframes`
   from {
@@ -94,7 +95,6 @@ const Hero = () => {
 
   return (
     <>
-      
       <Flex
         position="relative"
         flexDirection={['column-reverse', null, null, 'row']}
@@ -106,11 +106,13 @@ const Hero = () => {
             {t('1MM Swap the future of decentralized exchanges.')}
           </Heading>
           <Heading scale="md" mb="24px">
-            {t('Trade and earn. 1MM holders receive rewards and share 50% of 1MM Swap fees paid in BnB; the most rewarding decentralized platform in the universe.')}
+            {t(
+              'Trade and earn. 1MM holders receive rewards and share 50% of 1MM Swap fees paid in BnB; the most rewarding decentralized platform in the universe.',
+            )}
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}
-            <Link mr="16px" href="/swap">
+            <Link style={{ marginRight: '16px' }} to="/swap">
               <Button variant={!account ? 'secondary' : 'primary'}>{t('Trade Now')}</Button>
             </Link>
           </Flex>
@@ -125,7 +127,6 @@ const Hero = () => {
           <BunnyWrapper>
             <img src={imgicon} alt={t('image 1')} />
           </BunnyWrapper>
-          
         </Flex>
       </Flex>
     </>

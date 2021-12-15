@@ -1,5 +1,5 @@
 import React, { lazy } from 'react'
-import { Router, Redirect, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import { ResetCSS } from '@pancakeswap/uikit'
 import BigNumber from 'bignumber.js'
 import useEagerConnect from 'hooks/useEagerConnect'
@@ -16,7 +16,6 @@ import EasterEgg from './components/EasterEgg'
 import history from './routerHistory'
 // Views included in the main bundle
 import Pools from './views/Pools'
-import Swap from './views/Swap'
 import {
   RedirectDuplicateTokenIds,
   RedirectOldAddLiquidityPathStructure,
@@ -33,6 +32,7 @@ const Home = lazy(() => import('./views/Home'))
 const Farms = lazy(() => import('./views/Farms'))
 const FarmAuction = lazy(() => import('./views/FarmAuction'))
 const Lottery = lazy(() => import('./views/Lottery'))
+const Swap = lazy(() => import('./views/Swap'))
 const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
 const Collectibles = lazy(() => import('./views/Collectibles'))
@@ -61,7 +61,7 @@ const App: React.FC = () => {
   usePollCoreFarmData()
 
   return (
-    <Router history={history}>
+    <BrowserRouter>
       <ResetCSS />
       <GlobalStyle />
       <Menu>
@@ -148,7 +148,7 @@ const App: React.FC = () => {
       <EasterEgg iterations={2} />
       <ToastListener />
       <DatePickerPortal />
-    </Router>
+    </BrowserRouter>
   )
 }
 

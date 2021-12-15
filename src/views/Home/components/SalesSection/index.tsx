@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Text, Button, Link } from '@pancakeswap/uikit'
+import { Flex, Text, Button } from '@pancakeswap/uikit'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
 import CompositeImage, { CompositeImageProps } from '../CompositeImage'
 import PurpleWordHeading from '../PurpleWordHeading'
@@ -21,7 +22,7 @@ export interface SalesSectionProps {
 const SalesSection: React.FC<SalesSectionProps> = (props) => {
   const { t } = useTranslation()
 
-  const { headingText, bodyText, reverse, primaryButton,  images } = props
+  const { headingText, bodyText, reverse, primaryButton, images } = props
 
   const headingTranslatedText = t(headingText)
   const bodyTranslatedText = t(bodyText)
@@ -45,14 +46,13 @@ const SalesSection: React.FC<SalesSectionProps> = (props) => {
             {bodyTranslatedText}
           </Text>
           <Flex>
-            <Link mr="16px" external={primaryButton.external} href={primaryButton.to}>
+            <Link style={{ marginRight: '16px' }} to={primaryButton.to}>
               <Button>
                 <Text color="card" bold fontSize="16px">
                   {t(primaryButton.text)}
                 </Text>
               </Button>
             </Link>
-           
           </Flex>
         </Flex>
         <Flex
